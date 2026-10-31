@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kulturportal – Spørreundersøkelse</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>Kulturportal</h1>
+  <nav><a href="/">Spørreundersøkelse</a> &middot; <a href="/admin">Admin / resultater</a></nav>
+</header>
+<main>
+  <div class="card" id="intro">
+    <h2>Velkommen til kulturundersøkelsen</h2>
+    <p>Formålet er å kartlegge hvordan ansatte opplever ledelse, samarbeid og forbedringskultur i organisasjonen.
+    Det finnes ingen rette eller gale svar – vi er kun interessert i din ærlige oppfatning.</p>
+    <p class="muted">Undersøkelsen er anonym og tar ca. 3–5 minutter. Alle påstander besvares på en skala fra
+    1 (helt uenig) til 5 (helt enig). Resultatene brukes til å måle og utvikle kulturen over tid.</p>
+    <button id="startBtn">Start undersøkelsen</button>
+  </div>
+
+  <form id="surveyForm" hidden>
+    <div class="card">
+      <h2>Bakgrunnsinformasjon</h2>
+      <div class="field">
+        <label for="gender">Kjønn</label>
+        <select id="gender" required>
+          <option value="">Velg…</option>
+          <option value="Kvinne">Kvinne</option>
+          <option value="Mann">Mann</option>
+          <option value="Annet / ønsker ikke å svare">Annet / ønsker ikke å svare</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="tenure">Hvor lenge har du vært ansatt i organisasjonen?</label>
+        <select id="tenure" required>
+          <option value="">Velg…</option>
+          <option>0–5 år</option><option>6–10 år</option><option>11–15 år</option>
+          <option>16–20 år</option><option>Over 21 år</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="leadership_role">Har du personalansvar / lederfunksjon?</label>
+        <select id="leadership_role" required>
+          <option value="">Velg…</option>
+          <option value="Ja">Ja</option>
+          <option value="Nei">Nei</option>
+        </select>
+      </div>
+    </div>
+    <div id="questions"></div>
+    <div class="card">
+      <h2>Kommentar (valgfritt)</h2>
+      <div class="field">
+        <textarea id="comment" placeholder="Er det noe du vil utdype om ledelse, kultur eller forbedringsarbeid?"></textarea>
+      </div>
+      <p id="formError" class="error" hidden></p>
+      <button type="submit" id="submitBtn">Send inn svar</button>
+    </div>
+  </form>
+</main>
+<footer>Anonym kulturkartlegging &middot; Basert på forskning om transformasjonsledelse og forbedringskultur</footer>
+<script src="/static/survey.js"></script>
+</body>
+</html>

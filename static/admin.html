@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kulturportal – Admin og resultater</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>Kulturportal – Admin</h1>
+  <nav><a href="/">Spørreundersøkelse</a> &middot; <a href="/admin">Admin / resultater</a></nav>
+</header>
+<main>
+  <div class="card">
+    <h2>Oversikt</h2>
+    <div class="kpi-row" id="kpis"></div>
+    <p id="corr" class="muted"></p>
+    <p><a class="btn" href="/api/export.csv">Last ned rådata (CSV)</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Trend over tid (gjennomsnitt per måned)</h2>
+    <div id="trend"></div>
+  </div>
+
+  <div class="card">
+    <h2>Sammenligning etter gruppe</h2>
+    <div class="field" style="max-width:280px">
+      <label for="groupSelect">Velg bakgrunnsvariabel</label>
+      <select id="groupSelect">
+        <option value="">– ingen –</option>
+        <option value="gender">Kjønn</option>
+        <option value="tenure">Ansiennitet</option>
+        <option value="leadership_role">Personalansvar</option>
+      </select>
+    </div>
+    <div id="groups"></div>
+  </div>
+
+  <div class="card">
+    <h2>Transformasjonsledelse – dimensjoner</h2>
+    <div id="dimsTl"></div>
+  </div>
+  <div class="card">
+    <h2>Forbedringskultur – dimensjoner</h2>
+    <div id="dimsFk"></div>
+  </div>
+</main>
+<footer>Kun aggregerte, anonyme resultater vises her.</footer>
+<script src="/static/admin.js"></script>
+</body>
+</html>
