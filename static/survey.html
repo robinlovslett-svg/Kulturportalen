@@ -3,33 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kulturportalen – Mål kulturen i din organisasjon</title>
+<title>Kulturportalen – Mål og utvikle kulturen i din organisasjon</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 <header class="topbar">
   <h1>Kulturportalen</h1>
-  <nav><a href="/">Undersøkelse</a> &middot; <a href="/admin">Resultater</a></nav>
+  <nav><a href="/">Hjem</a> &middot; <a href="/admin">Resultater</a></nav>
 </header>
 
 <section class="hero">
-  <h1>Mål og utvikle kulturen<br>i din organisasjon</h1>
-  <p>En kort, anonym undersøkelse om ledelse, samarbeid og forbedringskultur –
-  basert på forskning om transformasjonsledelse og forbedringskultur.</p>
-  <a class="btn btn-light" href="#intro" id="heroBtn">Kom i gang ↓</a>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Anonym kulturkartlegging</p>
+    <h1>Mål og utvikle kulturen<br>i din organisasjon</h1>
+    <p class="hero-lead">Hvordan opplever medarbeiderne egentlig ledelsen, samarbeidet og
+    forbedringskulturen? En kort undersøkelse gir et ærlig bilde – og et godt utgangspunkt for utvikling.</p>
+    <button class="btn btn-light btn-lg" id="startBtn">Ta undersøkelsen</button>
+    <p class="hero-note">Tar ca. 3–5 minutter &middot; Helt anonym</p>
+  </div>
 </section>
 
-<main>
-  <div class="card" id="intro">
-    <h2>Velkommen til kulturundersøkelsen</h2>
-    <p>Formålet er å kartlegge hvordan ansatte opplever ledelse, samarbeid og forbedringskultur.
-    Det finnes ingen rette eller gale svar – vi er kun interessert i din ærlige oppfatning.</p>
-    <p class="muted">Undersøkelsen er anonym og tar ca. 3–5 minutter. Alle påstander besvares på en skala fra
-    1 (helt uenig) til 5 (helt enig). Resultatene brukes til å måle og utvikle kulturen over tid.</p>
-    <button id="startBtn">Start undersøkelsen</button>
+<main id="landing">
+  <div class="feature-row">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:var(--accent-soft)">🛡️</div>
+      <h3>Helt anonymt</h3>
+      <p>Ingen navn, e-post eller sporbare svar. Resultatene vises kun samlet, aldri per person.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:var(--teal-soft)">⚡</div>
+      <h3>Raskt å gjennomføre</h3>
+      <p>20 korte påstander om ledelse og arbeidshverdag – besvart på under fem minutter.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#efe9fb">📈</div>
+      <h3>Gir retning for utvikling</h3>
+      <p>Resultatene måler transformasjonsledelse og forbedringskultur – og kan følges opp over tid.</p>
+    </div>
   </div>
 
-  <form id="surveyForm" hidden>
+  <div class="card landing-about">
+    <h2>Hva måler vi?</h2>
+    <p>Undersøkelsen er bygget på forskning om sammenhengen mellom <strong>transformasjonsledelse</strong> og
+    <strong>forbedringskultur</strong>: psykologisk trygghet, verdier, støttende ledelse, engasjement,
+    læring og kontinuerlig forbedring.</p>
+    <p class="muted">Etter innsending får du din egen tilbakemelding med det samme.</p>
+  </div>
+</main>
+
+<main id="surveyWrap" hidden>
+  <form id="surveyForm">
     <div class="card">
       <h2>Bakgrunnsinformasjon</h2>
       <div class="field">

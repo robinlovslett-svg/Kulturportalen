@@ -37,8 +37,9 @@ function buildQuestions() {
 }
 
 document.getElementById("startBtn").addEventListener("click", () => {
-  document.getElementById("intro").hidden = true;
-  document.getElementById("surveyForm").hidden = false;
+  document.getElementById("landing").hidden = true;
+  document.querySelector(".hero").hidden = true;
+  document.getElementById("surveyWrap").hidden = false;
   window.scrollTo(0, 0);
 });
 
