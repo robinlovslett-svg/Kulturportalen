@@ -172,6 +172,8 @@ class Handler(BaseHTTPRequestHandler):
             self._send_file(STATIC / "result.html", "text/html; charset=utf-8")
         elif path == "/static/survey.js":
             self._send_file(STATIC / "survey.js", "application/javascript; charset=utf-8")
+        elif path == "/static/chart.umd.min.js":
+            self._send_file(STATIC / "chart.umd.min.js", "application/javascript; charset=utf-8")
         elif path == "/static/admin.js":
             self._send_file(STATIC / "admin.js", "application/javascript; charset=utf-8")
         elif path == "/static/style.css":
