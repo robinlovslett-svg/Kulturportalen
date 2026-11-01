@@ -160,6 +160,10 @@ class Handler(BaseHTTPRequestHandler):
         path = url.path
         if path == "/" or path == "/survey":
             self._send_file(STATIC / "survey.html", "text/html; charset=utf-8")
+        elif path == "/modell":
+            self._send_file(STATIC / "modell.html", "text/html; charset=utf-8")
+        elif path == "/modell.json":
+            self._send_file(BASE / "modell.json", "application/json; charset=utf-8")
         elif path == "/om":
             self._send_file(STATIC / "om.html", "text/html; charset=utf-8")
         elif path == "/admin":

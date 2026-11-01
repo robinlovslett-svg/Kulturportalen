@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forbedringskultur – modellen | Kulturportalen</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="landing-body">
+<div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
+<header class="topbar topbar-dark">
+  <h1>Kulturportalen</h1>
+  <nav><a href="/">Hjem</a> &middot; <a href="/om">Om tjenesten</a> &middot; <a href="/modell">Modellen</a> &middot; <a href="/admin">Resultater</a></nav>
+</header>
+<main style="position:relative;z-index:2;margin-top:2rem">
+  <div class="card about-dark" style="max-width:900px;margin:0 auto 1.5rem">
+    <h2 id="mTittel">Forbedringskultur – huset</h2>
+    <p id="mIntro" class="muted-dark"></p>
+  </div>
+  <div id="hus" style="max-width:900px;margin:0 auto"></div>
+  <div id="dimPanel" class="card about-dark" style="max-width:900px;margin:1.5rem auto;display:none">
+    <h2 id="dimTittel"></h2>
+    <p id="dimTekst"></p>
+    <p><strong>Henger sammen med:</strong> <span id="dimKoblinger"></span></p>
+    <p><a href="/" class="btn">Til forsiden</a></p>
+  </div>
+</main>
+<footer class="footer-dark">Forbedringskultur-modellen &middot; Kulturportalen</footer>
+<script>
+fetch("/modell.json").then(r => r.json()).then(m => {
+  document.getElementById("mTittel").textContent = m.title;
+  document.getElementById("mIntro").textContent = m.intro;
+  const hus = document.getElementById("hus");
+  const alle = {};
+  for (const [delKey, del] of Object.entries(m.deler)) {
+    for (const [dimKey, dim] of Object.entries(del.dims)) alle[dimKey] = dim;
+  }
+  function delSeksjon(delKey, del, klasse) {
+    const div = document.createElement("div");
+    div.className = "hus-" + klasse;
+    div.innerHTML = `<div class="hus-label">${del.tittel}</div>`;
+    const grid = document.createElement("div");
+    grid.className = "hus-grid";
+    for (const [dimKey, dim] of Object.entries(del.dims)) {
+      const b = document.createElement("button");
+      b.className = "hus-brikke";
+      b.textContent = dim.tittel;
+      b.onclick = () => visDim(dimKey, dim, m, alle);
+      grid.appendChild(b);
+    }
+    div.appendChild(grid);
+    hus.appendChild(div);
+  }
+  delSeksjon("tak", m.deler.tak, "tak");
+  const mid = document.createElement("div");
+  mid.className = "hus-mid";
+  mid.innerHTML = `<div class="hus-soyle">` + "" + `</div>`;
+  // to søyler side om side
+  const soyleWrap = document.createElement("div");
+  soyleWrap.className = "hus-soyler";
+  for (const key of ["soyle_mennesker", "soyle_struktur"]) {
+    const del = m.deler[key];
+    const col = document.createElement("div");
+    col.className = "hus-soyle";
+    col.innerHTML = `<div class="hus-label">${del.tittel}</div>`;
+    for (const [dimKey, dim] of Object.entries(del.dims)) {
+      const b = document.createElement("button");
+      b.className = "hus-brikke";
+      b.textContent = dim.tittel;
+      b.onclick = () => visDim(dimKey, dim, m, alle);
+      col.appendChild(b);
+    }
+    soyleWrap.appendChild(col);
+  }
+  hus.appendChild(soyleWrap);
+  delSeksjon("fundament", m.deler.fundament, "fundament");
+
+  function visDim(key, dim, m, alle) {
+    document.getElementById("dimPanel").style.display = "block";
+    document.getElementById("dimTittel").textContent = dim.tittel;
+    document.getElementById("dimTekst").textContent = dim.tekst;
+    const kob = (m.koblinger[key] || []).map(k => alle[k] ? alle[k].tittel : k);
+    document.getElementById("dimKoblinger").textContent = kob.join(", ");
+    document.getElementById("dimPanel").scrollIntoView({ behavior: "smooth" });
+  }
+});
+</script>
+<script src="/static/livereload.js"></script>
+</body>
+</html>

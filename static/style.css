@@ -231,3 +231,16 @@ footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2r
 .muted-dark { color: #8f8bab; }
 .link-light { color: #f2a03d; }
 .footer-dark { color: #6f6b8a; }
+
+.hus-tak, .hus-fundament { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
+.hus-tak { border-top: 4px solid #f2a03d; }
+.hus-fundament { border-bottom: 4px solid #e0562f; }
+.hus-soyler { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem; }
+.hus-soyle { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.hus-soyle:first-child { border-left: 4px solid #0e7c7b; }
+.hus-soyle:last-child { border-left: 4px solid #6d4fc2; }
+.hus-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #f2a03d; margin-bottom: 0.6rem; }
+.hus-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hus-brikke { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: #fff; border-radius: 10px; padding: 0.55rem 0.9rem; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.hus-brikke:hover { background: linear-gradient(90deg, #e0562f, #f2a03d); border-color: transparent; transform: translateY(-2px); }
+@media (max-width: 720px) { .hus-soyler { grid-template-columns: 1fr; } }
