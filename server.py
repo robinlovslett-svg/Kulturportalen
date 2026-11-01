@@ -361,6 +361,26 @@ class Handler(BaseHTTPRequestHandler):
         kommentarer = [json.loads(r["payload"]).get("comment", "") for r in rows]
         kommentarer = [k.strip() for k in kommentarer if k and k.strip()]
 
+        # Bro TL -> FK: hvilke FK-dimensjoner hver TL-dimensjon mater (teorigrunnlag fra oppgaven)
+        bro = []
+        for tld, tllabel in [("idealisert_inflytelse", "Idealisert innflytelse"),
+                             ("inspirerende_motivasjon", "Inspirerende motivasjon"),
+                             ("intellektuell_stimulering", "Intellektuell stimulering"),
+                             ("individuell_oppfølging", "Individuell oppfølging")]:
+            fkmal = {
+                "idealisert_inflytelse": ["Organisasjonens verdier", "Psykologisk trygghet"],
+                "inspirerende_motivasjon": ["Engasjement og empowerment"],
+                "intellektuell_stimulering": ["Lærende organisasjon", "Prosesstenkning og kontinuerlig forbedring"],
+                "individuell_oppfølging": ["Psykologisk trygghet", "Engasjement og empowerment", "Støttende ledelse"],
+            }[tld]
+            bro.append({
+                "tl_dim": tllabel,
+                "tl_skaar": dims_out["tl"][tld]["mean"] if dims_out["tl"][tld] else None,
+                "fk_mal": fkmal,
+                "fk_skaarer": {m: (dims_out["fk"][k]["mean"] if dims_out["fk"].get(k) else None)
+                              for k, lbl in [(k, v["label"]) for k, v in SURVEY["fk"]["dimensions"].items()] if lbl in fkmal},
+            })
+
         # Korrelasjon TL vs FK (Pearsons r)
         pairs = [(r["tl_score"], r["fk_score"]) for r in rows
                  if r["tl_score"] is not None and r["fk_score"] is not None]
@@ -383,6 +403,7 @@ class Handler(BaseHTTPRequestHandler):
             "group_filter": group_filter,
             "correlation_tl_fk": r_corr,
             "avdelinger": avdelinger,
+            "bro": bro,
             "gap": gap,
             "kommentarer": kommentarer,
         }

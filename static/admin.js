@@ -73,6 +73,34 @@ async function load(group) {
       <div class="bar-val">${g.gap >= 0 ? "+" : ""}${g.gap}</div></div>`;
   }).join("");
 
+  // Bro TL -> FK
+  const broEl = document.getElementById("bro");
+  broEl.innerHTML = (d.bro || []).map((b) => {
+    const mal = b.fk_mal.map((m) => {
+      const sk = b.fk_skaarer[m];
+      return `${m}: <strong>${sk != null ? sk.toFixed(2) : "–"}</strong>`;
+    }).join(" · ");
+    return `<div class="bro-row">
+      <div><strong>${b.tl_dim}</strong><div class="muted">TL-skår: ${b.tl_skaar != null ? b.tl_skaar.toFixed(2) : "–"}</div></div>
+      <div class="bro-arrow">→</div>
+      <div>B bygger: ${mal}</div>
+    </div>`;
+  }).join("");
+
+  // PDCA: laveste FK-dimensjon som forslag til fokus
+  const fkDims = Object.entries(d.dimensions.fk).filter(([, v]) => v);
+  fkDims.sort((a, b) => a[1].mean - b[1].mean);
+  const fokus = fkDims[0];
+  document.getElementById("pdca").innerHTML = `
+    <p><strong>Foreslått fokusområde:</strong> ${labelOf("fk", fokus[0])} (${fokus[1].mean.toFixed(2)} / 5 – lavest nå)</p>
+    <table>
+      <tr><th>PDCA</th><th>Hva det betyr her</th><th>Status</th></tr>
+      <tr><td><strong>Plan</strong></td><td>Kartlegging ferdig – denne rapporten er grunnlaget for ledermøtet</td><td>✅ Gjort</td></tr>
+      <tr><td><strong>Do</strong></td><td>Lederstøtte: 2–3 tiltak rettet mot ${labelOf("fk", fokus[0]).toLowerCase()} (f.eks. faste arenaer for tilbakemelding, tid til årsaksanalyse)</td><td>⬜ Pågår</td></tr>
+      <tr><td><strong>Check</strong></td><td>Gjenmåling om 6–12 måneder – se trend over tid over</td><td>⬜ Venter</td></tr>
+      <tr><td><strong>Act</strong></td><td>Juster tiltak ut fra hva som fungerte; bygg videre på det</td><td>⬜ Venter</td></tr>
+    </table>`;
+
   // Avdelinger
   const avd = Object.entries(d.avdelinger || {});
   document.getElementById("avdelinger").innerHTML = avd.length
