@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Kulturportal - maaling og utvikling av bedriftskultur.
+"""Kulturportal - måling og utvikling av bedriftskultur.
 
-Webapp bygget paa masteroppgaven "Lederens rolle som kulturarkitekt"
+Webapp bygget på masteroppgaven "Lederens rolle som kulturarkitekt"
 (transformasjonsledelse og forbedringskultur). Kun stdlib + SQLite.
 """
 import json
@@ -21,17 +21,17 @@ DB_PATH = BASE / "data" / "kulturportal.db"
 SURVEY = {
     "tl": {
         "title": "Lederskap",
-        "instruction": "Tenk paa din(e) naermeste leder(e) som har myndighet og ressurser til aa paavirke din arbeidshverdag.",
+        "instruction": "Tenk på din(e) nærmeste leder(e) som har myndighet og ressurser til å påvirke din arbeidshverdag.",
         "dimensions": {
             "idealisert_inflytelse": {"label": "Idealisert innflytelse", "items": [
                 "Ledelsen setter fellesskapet foran egne behov.",
                 "Ledelsen er et godt forbilde for hvordan vi bør opptre i organisasjonen."]},
             "inspirerende_motivasjon": {"label": "Inspirerende motivasjon", "items": [
                 "Ledelsen formidler en tydelig og motiverende visjon.",
-                "Ledelsen skaper engasjement paa min arbeidsplass slik at arbeidet føles meningsfullt."]},
+                "Ledelsen skaper engasjement på min arbeidsplass slik at arbeidet føles meningsfullt."]},
             "intellektuell_stimulering": {"label": "Intellektuell stimulering", "items": [
-                "Ledelsen oppmuntrer oss til aa tenke nytt.",
-                "Naar ting ikke gaar som planlagt, ser ledelsen muligheter for laering."]},
+                "Ledelsen oppmuntrer oss til å tenke nytt.",
+                "Når ting ikke går som planlagt, ser ledelsen muligheter for læring."]},
             "individuell_oppfølging": {"label": "Individuell oppfølging", "items": [
                 "Ledelsen viser interesse for mitt arbeid og min utvikling.",
                 "Ledelsen gir konstruktive tilbakemeldinger som hjelper meg videre."]},
@@ -39,26 +39,26 @@ SURVEY = {
     },
     "fk": {
         "title": "Samarbeid og arbeidspraksis",
-        "instruction": "Ta stilling til følgende paastander om hvordan du opplever samarbeid, kultur og forbedringsarbeid paa din arbeidsplass.",
+        "instruction": "Ta stilling til følgende påstander om hvordan du opplever samarbeid, kultur og forbedringsarbeid på din arbeidsplass.",
         "dimensions": {
             "psykologisk_trygghet": {"label": "Psykologisk trygghet", "items": [
-                "Det er trygt aa si fra hvis jeg er uenig, ogsaa med ledelsen.",
+                "Det er trygt å si fra hvis jeg er uenig, også med ledelsen.",
                 "Jeg opplever at mine synspunkter blir lyttet til."]},
             "organisasjonens_verdier": {"label": "Organisasjonens verdier", "items": [
-                "Vaare nedskrevne verdier blir etterlevd paa min arbeidsplass.",
-                "Hos oss er det viktig aa samarbeide for aa lykkes som et lag."]},
+                "Våre nedskrevne verdier blir etterlevd på min arbeidsplass.",
+                "Hos oss er det viktig å samarbeide for å lykkes som et lag."]},
             "støttende_ledelse": {"label": "Støttende ledelse", "items": [
                 "Ledelsen tilrettelegger for at jeg skal gjøre en god jobb.",
-                "Ledelsen gir meg handlingsrom for aa prøve nye måter aa jobbe paa."]},
+                "Ledelsen gir meg handlingsrom for å prøve nye måter å jobbe på."]},
             "engasjement_empowerment": {"label": "Engasjement og empowerment", "items": [
-                "Jeg har frihet til aa tilpasse hvordan jeg utfører mine arbeidsoppgaver.",
-                "Jeg engasjerer meg aktivt i maaten vi jobber paa."]},
-            "lærende_organisasjon": {"label": "Laerende organisasjon", "items": [
-                "Naar ting ikke gaar som planlagt, setter vi av tid til aa finne den underliggende aarsaken.",
-                "Der jeg jobber laerer vi av hverandre ved aa aktivt dele erfaringer."]},
+                "Jeg har frihet til å tilpasse hvordan jeg utfører mine arbeidsoppgaver.",
+                "Jeg engasjerer meg aktivt i måten vi jobber på."]},
+            "lærende_organisasjon": {"label": "Lærende organisasjon", "items": [
+                "Når ting ikke går som planlagt, setter vi av tid til å finne den underliggende årsaken.",
+                "Der jeg jobber lærer vi av hverandre ved å aktivt dele erfaringer."]},
             "prosesstenkning_forbedring": {"label": "Prosesstenkning og kontinuerlig forbedring", "items": [
-                "I vaar organisasjon jobber vi systematisk med aa forbedre vaare arbeidsprosesser.",
-                "Vi bruker faktabasert informasjon naar vi tar beslutninger paa min arbeidsplass."]},
+                "I vår organisasjon jobber vi systematisk med å forbedre våre arbeidsprosesser.",
+                "Vi bruker faktabasert informasjon naar vi tar beslutninger på min arbeidsplass."]},
         },
     },
 }
@@ -191,7 +191,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         answers = data.get("answers", {})
         if not isinstance(answers, dict) or len(answers) != N_ITEMS:
-            self._send_json({"error": f"Alle {N_ITEMS} paastander maa besvares"}, 400)
+            self._send_json({"error": f"Alle {N_ITEMS} påstander må besvares"}, 400)
             return
         clean = {}
         try:
@@ -356,7 +356,7 @@ def main():
     init_db()
     port = 8000
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    print(f"Kulturportal kører paa http://127.0.0.1:{port}  (survey: /  admin: /admin)")
+    print(f"Kulturportal kjører på http://127.0.0.1:{port}  (survey: /  admin: /admin)")
     server.serve_forever()
 
 
