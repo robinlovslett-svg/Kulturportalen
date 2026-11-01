@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kulturportalen – Kulturrapport</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Kulturportalen</h1>
+  <nav><a href="/">Hjem</a> &middot; <a href="/om">Om tjenesten</a> &middot; <a href="/modell">Modellen</a> &middot; <a href="/admin">Resultater</a></nav>
+</header>
+<main style="margin-top:1.5rem">
+  <div class="card">
+    <h2>Kulturrapport</h2>
+    <div class="kpi-row" id="kpis"></div>
+    <p id="corr" class="muted"></p>
+    <p>
+      <a class="btn" href="/api/export.csv">Last ned rådata (CSV)</a>
+      <button class="btn btn-secondary" id="demoBtn">Fyll med demodata (118 svar)</button>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>FK-dimensjoner – radar (alle vs. ledere)</h2>
+    <canvas id="radar" height="300"></canvas>
+    <p class="muted">Grønn: alle ansatte. Lilla: ledere med personalansvar.</p>
+  </div>
+
+  <div class="card">
+    <h2>Gap per dimensjon: ledelse minus medarbeidere</h2>
+    <p class="muted">Positiv stolpe = ledelsen vurderer dimensjonen høyere enn medarbeiderne.</p>
+    <div id="gap"></div>
+  </div>
+
+  <div class="card">
+    <h2>Broen: fra ledelse (TL) til forbedringskultur (FK)</h2>
+    <p class="muted">Forskningen bak portalen viser sterk sammenheng mellom transformasjonsledelse og forbedringskultur
+    (Pearsons r vist over). Tabellen under kobler hver TL-dimensjon til FK-dimensjonene den bygger – med faktiske skårer fra denne målingen.</p>
+    <div id="bro"></div>
+  </div>
+
+  <div class="card">
+    <h2>Tiltaksplan (PDCA) – lederstøtte etter kartlegging</h2>
+    <p class="muted">Kartleggingen er første steg. Lederstøtten bygger bro videre: velg fokusområde fra laveste FK-dimensjon, sett tiltak, mål effekt ved neste måling.</p>
+    <div id="pdca"></div>
+  </div>
+
+  <div class="card">
+    <h2>Avdelinger: trygghet og kultur</h2>
+    <div id="avdelinger"></div>
+    <p class="muted">Lav trygghet kombinert med lav FK er et kultursignal: der det ikke er trygt å si fra, lærer organisasjonen ingenting.</p>
+  </div>
+
+  <div class="card">
+    <h2>Trend over tid (gjennomsnitt per måned)</h2>
+    <div id="trend"></div>
+  </div>
+
+  <div class="card">
+    <h2>Sammenligning etter gruppe</h2>
+    <div class="field" style="max-width:280px">
+      <label for="groupSelect">Velg bakgrunnsvariabel</label>
+      <select id="groupSelect">
+        <option value="">– ingen –</option>
+        <option value="gender">Kjønn</option>
+        <option value="tenure">Ansiennitet</option>
+        <option value="leadership_role">Personalansvar</option>
+        <option value="avdeling">Avdeling</option>
+      </select>
+    </div>
+    <div id="groups"></div>
+  </div>
+
+  <div class="card">
+    <h2>Transformasjonsledelse – dimensjoner</h2>
+    <div id="dimsTl"></div>
+  </div>
+  <div class="card">
+    <h2>Forbedringskultur – dimensjoner</h2>
+    <div id="dimsFk"></div>
+  </div>
+
+  <div class="card">
+    <h2>Anonymiserte kommentarer</h2>
+    <div id="kommentarer"></div>
+  </div>
+</main>
+<footer>Kun aggregerte, anonyme resultater vises her. Grupper under 5 slås sammen i praksis ved lav svarprosent.</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="/static/admin.js"></script>
+<script src="/static/livereload.js"></script>
+</body>
+</html>

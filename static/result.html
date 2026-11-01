@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kulturportalen – Ditt resultat</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Kulturportalen</h1>
+  <nav><a href="/">Hjem</a> &middot; <a href="/om">Om tjenesten</a> &middot; <a href="/modell">Modellen</a> &middot; <a href="/admin">Resultater</a></nav>
+</header>
+<main style="margin-top:1.5rem">
+  <div id="content"></div>
+  <div class="card">
+    <p class="muted">Din individuelle skår (1–5) sammenlignes mot organisasjonens gjennomsnitt når flere har svart.
+    Dette er et øyeblikksbilde – kulturen utvikles over tid, så gjenta gjerne målingen senere.</p>
+    <a class="btn" href="/">Tilbake til forsiden</a>
+  </div>
+</main>
+<footer>Anonym kulturkartlegging</footer>
+<script>
+function bar(label, value, cls) {
+  const pct = value == null ? 0 : ((value - 1) / 4) * 100;
+  const color = value == null ? "#ccc" : value >= 4 ? "var(--good)" : value >= 3 ? "var(--warn)" : "var(--bad)";
+  return `<div class="bar-row"><div>${label}</div>
+    <div class="bar-track"><div class="bar-fill ${cls || ""}" style="width:${pct}%;background:${color}"></div></div>
+    <div class="bar-val">${value == null ? "–" : value.toFixed(2)}</div></div>`;
+}
+(async () => {
+  const id = new URLSearchParams(location.search).get("id");
+  const el = document.getElementById("content");
+  const res = await fetch("/api/result?id=" + encodeURIComponent(id));
+  const data = await res.json();
+  if (data.error) { el.innerHTML = `<div class="card"><p class="error">${data.error}</p></div>`; return; }
+  let html = `<div class="card"><h2>Takk for ditt svar!</h2>
+    <p class="muted">Dette er din individuelle tilbakemelding basert på ${Object.keys(data.dimensions.tl).length + Object.keys(data.dimensions.fk).length} dimensjoner.</p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="num">${data.tl.toFixed(2)}</div><div class="lbl">Transformasjonsledelse (snitt)</div></div>
+      <div class="kpi"><div class="num">${data.fk.toFixed(2)}</div><div class="lbl">Forbedringskultur (snitt)</div></div>
+    </div></div>`;
+  for (const [gk, title] of [["tl", "Lederskap – transformasjonsledelse"], ["fk", "Forbedringskultur"]]) {
+    html += `<div class="card"><h2>${title}</h2>`;
+    for (const [dk, dv] of Object.entries(data.dimensions[gk])) {
+      html += bar(data.survey[gk].dimensions[dk].label, dv, gk === "fk" ? "fk" : "");
+    }
+    html += `</div>`;
+  }
+  el.innerHTML = html;
+})();
+</script>
+<script src="/static/livereload.js"></script>
+</body>
+</html>
