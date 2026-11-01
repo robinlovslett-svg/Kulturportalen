@@ -186,3 +186,8 @@ footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2r
 .bro-row { display: grid; grid-template-columns: 220px 30px 1fr; gap: 0.8rem; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
 .bro-arrow { color: var(--accent); font-weight: 700; font-size: 1.2rem; }
 @media (max-width: 640px) { .bro-row { grid-template-columns: 1fr; } .bro-arrow { display: none; } }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.two-col ul { margin: 0.5rem 0 0; padding-left: 1.1rem; color: var(--muted); font-size: 0.93rem; }
+.two-col li { margin-bottom: 0.35rem; }
+@media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
