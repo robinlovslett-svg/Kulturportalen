@@ -156,7 +156,7 @@
 <footer class="footer-dark">Anonym kulturkartlegging &middot; Basert på forskning om transformasjonsledelse og forbedringskultur</footer>
 
 <!-- skjema (skjult til man klikker) -->
-<main id="surveyWrap" hidden>
+<main id="surveyWrap" class="survey-wrap" hidden>
   <form id="surveyForm">
     <div class="card about-dark">
       <h2>Bakgrunnsinformasjon</h2>
@@ -258,10 +258,24 @@ fetch("/modell.json").then(r => r.json()).then(m => {
 // begge CTA-knapper starter skjemaet
 for (const id of ["startBtn", "startBtn2"]) {
   document.getElementById(id).addEventListener("click", () => {
-    document.querySelectorAll(".scroll-sec, .hero-landing, footer").forEach(e => e.style.display = "none");
     document.body.classList.remove("landing-body");
+    document.querySelectorAll(".scroll-sec, .hero-landing").forEach(e => e.style.display = "none");
     document.getElementById("surveyWrap").hidden = false;
     window.scrollTo(0, 0);
+  });
+}
+// ankerlenker: hvis skjema er åpent, lukk det først
+for (const a of document.querySelectorAll('header nav a[href^="#"]')) {
+  a.addEventListener("click", (e) => {
+    const wrap = document.getElementById("surveyWrap");
+    if (!wrap.hidden) {
+      e.preventDefault();
+      wrap.hidden = true;
+      document.body.classList.add("landing-body");
+      document.querySelectorAll(".scroll-sec, .hero-landing").forEach(el => el.style.display = "");
+      const target = document.querySelector(a.getAttribute("href"));
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    }
   });
 }
 </script>
