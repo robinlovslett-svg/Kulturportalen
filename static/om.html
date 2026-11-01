@@ -6,23 +6,24 @@
 <title>Om tjenesten – Kulturportalen</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
-<header class="topbar">
+<body class="landing-body">
+<div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
+<header class="topbar topbar-dark">
   <h1>Kulturportalen</h1>
   <nav><a href="/">Hjem</a> &middot; <a href="/om">Om tjenesten</a> &middot; <a href="/modell">Modellen</a> &middot; <a href="/admin">Resultater</a></nav>
 </header>
 
-<section class="hero">
+<section class="hero-landing" style="padding:3.5rem 1.5rem 2.5rem">
   <div class="hero-inner">
-    <p class="hero-eyebrow">Forskningsbasert kulturkartlegging</p>
-    <h1>Om tjenesten</h1>
-    <p class="hero-lead">Portalen er bygget på en masteroppgave om sammenhengen mellom
+    <p class="hero-eyebrow-dark">Forskningsbasert kulturkartlegging</p>
+    <h1 class="mega" style="font-size:clamp(2rem,5vw,3.2rem)">Om tjenesten</h1>
+    <p class="hero-lead-dark">Portalen er bygget på en masteroppgave om sammenhengen mellom
     transformasjonsledelse og forbedringskultur (UiT, 2026).</p>
   </div>
 </section>
 
-<main style="margin-top:-2.2rem">
-  <div class="card">
+<main style="margin-top:-1.5rem;position:relative;z-index:2">
+  <div class="card about-dark">
     <h2>Hvorfor kultur måles sammen med ledelse</h2>
     <p>Mange virksomheter investerer i kvalitetssystemer, prosedyrer og Lean-verktøy – uten at
     forbedringsarbeidet nødvendigvis blir en naturlig del av arbeidshverdagen. Forskningen viser at
@@ -33,7 +34,7 @@
     Ledelse og kultur henger tett sammen i medarbeidernes opplevelse av arbeidshverdagen.</p>
   </div>
 
-  <div class="card">
+  <div class="card about-dark">
     <h2>Hva vi måler</h2>
     <div class="two-col">
       <div>
@@ -59,7 +60,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card about-dark">
     <h2>Slik bruker vi funnene i praksis</h2>
     <p>Studien peker på fire praktiske implikasjoner som ligger til grunn for hvordan vi følger opp:</p>
     <ol>
@@ -70,20 +71,20 @@
     </ol>
   </div>
 
-  <div class="card">
+  <div class="card about-dark">
     <h2>Hva du får</h2>
     <div class="feature-row">
-      <div class="feature-card">
+      <div class="feature-card feature-card-dark">
         <div class="feature-icon" style="background:var(--accent-soft)">📋</div>
         <h3>1. Kartlegging</h3>
         <p>Anonym undersøkelse (20 påstander, 3–5 min) + automatisk rapport med TL/FK-indekser, dimensjoner, gap, avdelinger og broen mellom TL og FK.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card-dark">
         <div class="feature-icon" style="background:var(--teal-soft)">🤝</div>
         <h3>2. Lederstøtte</h3>
         <p>Tolkningsmøte med ledelsen, tiltaksplan (PDCA) rettet mot de svakeste dimensjonene, og støtte i gjennomføring.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card-dark">
         <div class="feature-icon" style="background:#efe9fb">📈</div>
         <h3>3. Gjenmåling</h3>
         <p>Ny måling etter 6–12 måneder med trendvisning – effekten av tiltakene blir synlig.</p>
@@ -92,13 +93,13 @@
     <p><a class="btn" href="/">Kom i gang – ta undersøkelsen</a></p>
   </div>
 
-  <div class="card">
+  <div class="card about-dark">
     <p class="muted"><strong>Metode og grenser:</strong> Målingen bygger på selvrapportering (tverrsnitt), så resultatene viser
     samvariasjon, ikke påvist årsakssammenheng. Hver dimensjon måles med to påstander. Resultatene er et utviklingsverktøy,
     aldri revisjonsbevis. Kilde: Løvslett &amp; Militei (2026), «Lederens rolle som kulturarkitekt», masteroppgave i ledelse, UiT.</p>
   </div>
 </main>
-<footer>Anonym kulturkartlegging &middot; Basert på forskning om transformasjonsledelse og forbedringskultur</footer>
+<footer class="footer-dark">Anonym kulturkartlegging &middot; Basert på forskning om transformasjonsledelse og forbedringskultur</footer>
 <script src="/static/livereload.js"></script>
 </body>
 </html>
