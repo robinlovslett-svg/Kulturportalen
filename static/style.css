@@ -18,7 +18,7 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.55;
@@ -209,7 +209,7 @@ footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2r
 .hero-landing-inner { max-width: 900px; margin: 0 auto; }
 .hero-eyebrow-dark { display: inline-block; text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.78rem; font-weight: 700; color: #f2a03d;
   border: 1px solid rgba(242,160,61,0.4); border-radius: 999px; padding: 0.4rem 1.1rem; margin-bottom: 1.6rem; background: rgba(242,160,61,0.08); }
-.mega { font-size: clamp(2.6rem, 8vw, 5.2rem); line-height: 0.98; margin: 0 0 1.4rem; font-weight: 900; letter-spacing: -0.02em; color: #fff; }
+.mega { font-size: clamp(2.6rem, 8vw, 5.2rem); line-height: 1.02; margin: 0 0 1.4rem; font-weight: 900; letter-spacing: -0.02em; color: #fff; }
 .grad-text { background: linear-gradient(90deg, #e0562f, #f2a03d 45%, #34d399); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero-lead-dark { max-width: 620px; margin: 0 auto 2rem; font-size: 1.15rem; color: #b9b5d1; }
 .hero-lead-dark strong { color: #fff; }
