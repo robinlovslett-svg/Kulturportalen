@@ -3,20 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kulturportalen – Resultater</title>
+<title>Kulturportalen – Kulturrapport</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 <header class="topbar">
   <h1>Kulturportalen</h1>
-  <nav><a href="/">Undersøkelse</a> &middot; <a href="/admin">Resultater</a></nav>
+  <nav><a href="/">Hjem</a> &middot; <a href="/admin">Resultater</a></nav>
 </header>
 <main style="margin-top:1.5rem">
   <div class="card">
-    <h2>Oversikt</h2>
+    <h2>Kulturrapport</h2>
     <div class="kpi-row" id="kpis"></div>
     <p id="corr" class="muted"></p>
-    <p><a class="btn" href="/api/export.csv">Last ned rådata (CSV)</a></p>
+    <p>
+      <a class="btn" href="/api/export.csv">Last ned rådata (CSV)</a>
+      <button class="btn btn-secondary" id="demoBtn">Fyll med demodata (118 svar)</button>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>FK-dimensjoner – radar (alle vs. ledere)</h2>
+    <canvas id="radar" height="300"></canvas>
+    <p class="muted">Grønn: alle ansatte. Lilla: ledere med personalansvar.</p>
+  </div>
+
+  <div class="card">
+    <h2>Gap per dimensjon: ledelse minus medarbeidere</h2>
+    <p class="muted">Positiv stolpe = ledelsen vurderer dimensjonen høyere enn medarbeiderne.</p>
+    <div id="gap"></div>
+  </div>
+
+  <div class="card">
+    <h2>Avdelinger: trygghet og kultur</h2>
+    <div id="avdelinger"></div>
+    <p class="muted">Lav trygghet kombinert med lav FK er et kultursignal: der det ikke er trygt å si fra, lærer organisasjonen ingenting.</p>
   </div>
 
   <div class="card">
@@ -33,6 +54,7 @@
         <option value="gender">Kjønn</option>
         <option value="tenure">Ansiennitet</option>
         <option value="leadership_role">Personalansvar</option>
+        <option value="avdeling">Avdeling</option>
       </select>
     </div>
     <div id="groups"></div>
@@ -46,8 +68,14 @@
     <h2>Forbedringskultur – dimensjoner</h2>
     <div id="dimsFk"></div>
   </div>
+
+  <div class="card">
+    <h2>Anonymiserte kommentarer</h2>
+    <div id="kommentarer"></div>
+  </div>
 </main>
-<footer>Kun aggregerte, anonyme resultater vises her.</footer>
+<footer>Kun aggregerte, anonyme resultater vises her. Grupper under 5 slås sammen i praksis ved lav svarprosent.</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="/static/admin.js"></script>
 <script src="/static/livereload.js"></script>
 </body>

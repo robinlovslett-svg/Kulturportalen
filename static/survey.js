@@ -63,6 +63,7 @@ document.getElementById("surveyForm").addEventListener("submit", async (e) => {
     gender: document.getElementById("gender").value,
     tenure: document.getElementById("tenure").value,
     leadership_role: document.getElementById("leadership_role").value,
+    avdeling: document.getElementById("avdeling").value,
     comment: document.getElementById("comment").value,
   };
   const btn = document.getElementById("submitBtn");

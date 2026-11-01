@@ -18,7 +18,10 @@
     <h1>Mål og utvikle kulturen<br>i din organisasjon</h1>
     <p class="hero-lead">Hvordan opplever medarbeiderne egentlig ledelsen, samarbeidet og
     forbedringskulturen? En kort undersøkelse gir et ærlig bilde – og et godt utgangspunkt for utvikling.</p>
-    <button class="btn btn-light btn-lg" id="startBtn">Ta undersøkelsen</button>
+    <div class="hero-cta">
+      <button class="btn btn-light btn-lg" id="startBtn">Ta undersøkelsen</button>
+      <a class="btn btn-ghost btn-lg" href="/admin">Se kulturrapporten</a>
+    </div>
     <p class="hero-note">Tar ca. 3–5 minutter &middot; Helt anonym</p>
   </div>
 </section>
@@ -70,6 +73,14 @@
           <option value="">Velg…</option>
           <option>0–5 år</option><option>6–10 år</option><option>11–15 år</option>
           <option>16–20 år</option><option>Over 21 år</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="avdeling">Hvilken avdeling jobber du i?</label>
+        <select id="avdeling" required>
+          <option value="">Velg…</option>
+          <option>Produksjon</option><option>Vedlikehold</option><option>Administrasjon</option>
+          <option>Annet</option>
         </select>
       </div>
       <div class="field">

@@ -83,11 +83,15 @@ def init_db():
             gender TEXT,
             tenure TEXT,
             leadership_role TEXT,
+            avdeling TEXT,
             tl_score REAL,
             fk_score REAL,
             payload TEXT NOT NULL
         )
     """)
+    cols = [r[1] for r in con.execute("PRAGMA table_info(responses)").fetchall()]
+    if "avdeling" not in cols:
+        con.execute("ALTER TABLE responses ADD COLUMN avdeling TEXT")
     con.execute("""
         CREATE TABLE IF NOT EXISTS answers (
             response_id TEXT NOT NULL,
@@ -173,6 +177,8 @@ class Handler(BaseHTTPRequestHandler):
         elif path == "/api/result":
             rid = parse_qs(url.query).get("id", [None])[0]
             self._send_json(self._result(rid))
+        elif path == "/api/demo":
+            self._send_json(self._seed_demo())
         elif path == "/api/export.csv":
             self._export_csv()
         else:
@@ -211,14 +217,15 @@ class Handler(BaseHTTPRequestHandler):
             "gender": data.get("gender"),
             "tenure": data.get("tenure"),
             "leadership_role": data.get("leadership_role"),
+            "avdeling": data.get("avdeling"),
             "comment": (data.get("comment") or "")[:2000],
         }
         con = sqlite3.connect(DB_PATH)
         con.execute(
-            "INSERT INTO responses (id, created_at, gender, tenure, leadership_role, tl_score, fk_score, payload) "
-            "VALUES (?,?,?,?,?,?,?,?)",
+            "INSERT INTO responses (id, created_at, gender, tenure, leadership_role, avdeling, tl_score, fk_score, payload) "
+            "VALUES (?,?,?,?,?,?,?,?,?)",
             (rid, datetime.now(timezone.utc).isoformat(), payload["gender"], payload["tenure"],
-             payload["leadership_role"], tl, fk, json.dumps({"answers": clean, **payload}, ensure_ascii=False)),
+             payload["leadership_role"], payload["avdeling"], tl, fk, json.dumps({"answers": clean, **payload}, ensure_ascii=False)),
         )
         for item, val in clean.items():
             con.execute("INSERT INTO answers (response_id, item, value) VALUES (?,?,?)", (rid, int(item), val))
@@ -305,6 +312,55 @@ class Handler(BaseHTTPRequestHandler):
                           "fk": round(statistics.mean(v["fk"]), 2) if v["fk"] else None,
                           "n": len(v["tl"])} for k, v in sorted(agg.items())}
 
+        # Avdelingsoversikt
+        avd = {}
+        for r in rows:
+            a = r["avdeling"] or "Ukjent"
+            avd.setdefault(a, {"tl": [], "fk": []})
+            if r["tl_score"] is not None:
+                avd[a]["tl"].append(r["tl_score"])
+                avd[a]["fk"].append(r["fk_score"])
+        # psykologisk trygghet per avdeling (P9-P10)
+        con2 = sqlite3.connect(DB_PATH)
+        pt_rows = con2.execute(
+            "SELECT r.avdeling, a.value FROM answers a JOIN responses r ON r.id=a.response_id WHERE a.item IN (9,10)"
+        ).fetchall()
+        con2.close()
+        pt = {}
+        for a, v in pt_rows:
+            pt.setdefault(a or "Ukjent", []).append(v)
+        avdelinger = {
+            a: {
+                "tl": round(statistics.mean(v["tl"]), 2) if v["tl"] else None,
+                "fk": round(statistics.mean(v["fk"]), 2) if v["fk"] else None,
+                "trygghet": round(statistics.mean(pt.get(a, [])), 2) if pt.get(a) else None,
+                "n": len(v["tl"]),
+            } for a, v in sorted(avd.items())
+        }
+
+        # Gap ledere vs medarbeidere per dimensjon
+        con3 = sqlite3.connect(DB_PATH)
+        all_rows = con3.execute(
+            "SELECT a.item, a.value, r.leadership_role FROM answers a JOIN responses r ON r.id=a.response_id"
+        ).fetchall()
+        con3.close()
+        ledere = {i: [] for i in range(1, N_ITEMS + 1)}
+        med = {i: [] for i in range(1, N_ITEMS + 1)}
+        for item, value, role in all_rows:
+            (ledere if role == "Ja" else med)[item].append(value)
+        gap = []
+        for item in range(1, N_ITEMS + 1):
+            g, d = ITEM_INDEX[item]
+            l = statistics.mean(ledere[item]) if ledere[item] else None
+            m = statistics.mean(med[item]) if med[item] else None
+            if l is not None and m is not None:
+                gap.append({"dim": SURVEY[g]["dimensions"][d]["label"], "gap": round(l - m, 2)})
+        gap.sort(key=lambda x: -abs(x["gap"]))
+
+        # kommentarer (anonymiserte, kun fra payload)
+        kommentarer = [json.loads(r["payload"]).get("comment", "") for r in rows]
+        kommentarer = [k.strip() for k in kommentarer if k and k.strip()]
+
         # Korrelasjon TL vs FK (Pearsons r)
         pairs = [(r["tl_score"], r["fk_score"]) for r in rows
                  if r["tl_score"] is not None and r["fk_score"] is not None]
@@ -326,7 +382,54 @@ class Handler(BaseHTTPRequestHandler):
             "groups": groups,
             "group_filter": group_filter,
             "correlation_tl_fk": r_corr,
+            "avdelinger": avdelinger,
+            "gap": gap,
+            "kommentarer": kommentarer,
         }
+
+    def _seed_demo(self):
+        import random
+        rnd = random.Random(20260926)
+        avdelinger = ["Produksjon", "Vedlikehold", "Administrasjon"]
+        def normal(mu, sigma):
+            u = max(rnd.random(), 1e-9); v = rnd.random()
+            return mu + sigma * ( (-2 * __import__("math").log(u)) ** 0.5 ) * __import__("math").cos(2 * 3.14159265 * v)
+        added = 0
+        for i in range(118):
+            r = rnd.random()
+            avd = "Produksjon" if r < 0.45 else "Vedlikehold" if r < 0.75 else "Administrasjon"
+            leder = rnd.random() < 0.18
+            ans = "Under 2 år" if rnd.random() < 0.3 else ("2–10 år" if rnd.random() < 0.6 else "Over 10 år")
+            answers = {}
+            for item in range(1, N_ITEMS + 1):
+                g, d = ITEM_INDEX[item]
+                dim_label = SURVEY[g]["dimensions"][d]["label"]
+                mu = 3.35
+                if leder: mu += 0.45 if g == "tl" else 0.3
+                if avd == "Vedlikehold":
+                    if dim_label == "Psykologisk trygghet": mu -= 0.95
+                    if dim_label == "Lærende organisasjon": mu -= 0.5
+                    if dim_label == "Prosesstenkning og kontinuerlig forbedring": mu -= 0.3
+                    if g == "tl": mu -= 0.25
+                if avd == "Produksjon":
+                    if dim_label == "Psykologisk trygghet": mu -= 0.3
+                    if dim_label == "Engasjement og empowerment": mu += 0.1
+                if avd == "Administrasjon": mu += 0.3
+                answers[str(item)] = min(5, max(1, round(normal(mu, 0.85))))
+            payload = {"gender": "Mann", "tenure": ans, "leadership_role": "Ja" if leder else "Nei",
+                       "avdeling": avd, "comment": ""}
+            rid = uuid.uuid4().hex
+            tl, fk, _ = score(answers)
+            con = sqlite3.connect(DB_PATH)
+            con.execute(
+                "INSERT OR IGNORE INTO responses (id, created_at, gender, tenure, leadership_role, avdeling, tl_score, fk_score, payload) VALUES (?,?,?,?,?,?,?,?,?)",
+                (rid, datetime.now(timezone.utc).isoformat(), payload["gender"], payload["tenure"],
+                 payload["leadership_role"], avd, tl, fk, json.dumps({"answers": answers, **payload}, ensure_ascii=False)))
+            for item, val in answers.items():
+                con.execute("INSERT OR IGNORE INTO answers (response_id, item, value) VALUES (?,?,?)", (rid, int(item), val))
+            con.commit(); con.close()
+            added += 1
+        return {"added": added}
 
     def _export_csv(self):
         rows = fetch_all()
