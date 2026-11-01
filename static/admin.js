@@ -50,6 +50,8 @@ async function load(group) {
   // Radar over FK-dimensjoner
   const radarData = Object.entries(d.dimensions.fk).map(([k, s]) => ({ dim: labelOf("fk", k), verdi: s ? s.mean : 0 }));
   const ctx = document.getElementById("radar");
+  ctx.style.width = "100%";
+  ctx.style.height = "720px";
   if (window._radar) window._radar.destroy();
   window._radar = new Chart(ctx, {
     type: "radar",
@@ -62,6 +64,7 @@ async function load(group) {
       }],
     },
     options: {
+      maintainAspectRatio: false,
       scales: { r: { min: 1, max: 5, ticks: { stepSize: 1, color: "#a29dc4", backdropColor: "transparent" },
                     grid: { color: "rgba(255,255,255,0.12)" }, angleLines: { color: "rgba(255,255,255,0.12)" },
                     pointLabels: { color: "#e8e6f5", font: { size: 12 } } } },
