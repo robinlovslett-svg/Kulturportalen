@@ -232,15 +232,34 @@ footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2r
 .link-light { color: #f2a03d; }
 .footer-dark { color: #6f6b8a; }
 
-.hus-tak, .hus-fundament { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
-.hus-tak { border-top: 4px solid #f2a03d; }
-.hus-fundament { border-bottom: 4px solid #e0562f; }
-.hus-soyler { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem; }
-.hus-soyle { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.hus-soyle:first-child { border-left: 4px solid #0e7c7b; }
-.hus-soyle:last-child { border-left: 4px solid #6d4fc2; }
-.hus-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #f2a03d; margin-bottom: 0.6rem; }
-.hus-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.hus-brikke { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: #fff; border-radius: 10px; padding: 0.55rem 0.9rem; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
-.hus-brikke:hover { background: linear-gradient(90deg, #e0562f, #f2a03d); border-color: transparent; transform: translateY(-2px); }
-@media (max-width: 720px) { .hus-soyler { grid-template-columns: 1fr; } }
+
+/* ---------- EKTE HUS ---------- */
+.hus { max-width: 640px; margin: 0 auto; filter: drop-shadow(0 24px 40px rgba(0,0,0,0.5)); }
+.hus-tak { position: relative; background: linear-gradient(180deg, #f2a03d, #e0562f); border-radius: 14px 14px 0 0; padding: 1.4rem 1.2rem 1rem; clip-path: polygon(50% 0, 100% 38%, 100% 100%, 0 100%, 0 38%); padding-top: 3.2rem; }
+.hus-tak .hus-label { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+.hus-tak .hus-brikke { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.35); color: #fff; }
+.hus-tak .hus-brikke:hover { background: #fff; color: #c2431f; }
+.hus-kropp { display: grid; grid-template-columns: 1fr 110px 1fr; background: #1c1830; border-left: 3px solid #2c2745; border-right: 3px solid #2c2745; }
+.hus-soyle { padding: 1rem 0.8rem; }
+.hus-soyle:first-child { border-right: 1px solid #2c2745; }
+.hus-soyle:last-child { border-left: 1px solid #2c2745; }
+.hus-soyle .hus-label { color: #f2a03d; font-size: 0.68rem; }
+.hus-grid.vert { flex-direction: column; align-items: stretch; }
+.hus-soyle .hus-brikke { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: #e8e6f5; text-align: left; }
+.hus-soyle .hus-brikke:hover { background: linear-gradient(90deg, #e0562f, #f2a03d); color: #fff; border-color: transparent; transform: none; }
+.hus-veg { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: rgba(0,0,0,0.25); }
+.veg-vindu { writing-mode: vertical-rl; font-weight: 900; letter-spacing: 0.18em; font-size: 0.8rem; color: #f2a03d; }
+.veg-dor { width: 34px; height: 52px; background: #0e7c7b; border-radius: 17px 17px 0 0; border: 2px solid rgba(255,255,255,0.25); border-bottom: none; display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.8rem; }
+.hus-fundament { background: linear-gradient(180deg, #3a3355, #2a2440); padding: 1rem 1.2rem; border-radius: 0 0 6px 6px; border-top: 4px solid #e0562f; }
+.hus-fundament .hus-brikke { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); color: #fff; }
+.hus-fundament .hus-brikke:hover { background: #e0562f; }
+.hus-bakke { height: 14px; background: #0a0812; border-radius: 0 0 8px 8px; margin: 0 -30px; }
+.hus-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #f2a03d; margin-bottom: 0.6rem; }
+.hus-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.hus-brikke { border-radius: 10px; padding: 0.55rem 0.9rem; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; border: 1px solid rgba(255,255,255,0.16); }
+@media (max-width: 560px) {
+  .hus-kropp { grid-template-columns: 1fr; }
+  .hus-veg { display: none; }
+  .hus-soyle:first-child { border-right: none; border-bottom: 1px solid #2c2745; }
+  .hus-soyle:last-child { border-left: none; }
+}
