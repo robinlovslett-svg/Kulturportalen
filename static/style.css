@@ -239,7 +239,7 @@ footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2r
 .hus-tak .hus-label { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
 .hus-tak .hus-brikke { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.35); color: #fff; }
 .hus-tak .hus-brikke:hover { background: #fff; color: #c2431f; }
-.hus-kropp { display: grid; grid-template-columns: 1fr 110px 1fr; background: #1c1830; border-left: 3px solid #2c2745; border-right: 3px solid #2c2745; }
+.hus-kropp { display: grid; grid-template-columns: 1fr 220px 1fr; background: #1c1830; border-left: 3px solid #2c2745; border-right: 3px solid #2c2745; }
 .hus-soyle { padding: 1rem 0.8rem; }
 .hus-soyle:first-child { border-right: 1px solid #2c2745; }
 .hus-soyle:last-child { border-left: 1px solid #2c2745; }
@@ -247,9 +247,12 @@ footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2r
 .hus-grid.vert { flex-direction: column; align-items: stretch; }
 .hus-soyle .hus-brikke { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: #e8e6f5; text-align: left; }
 .hus-soyle .hus-brikke:hover { background: linear-gradient(90deg, #e0562f, #f2a03d); color: #fff; border-color: transparent; transform: none; }
-.hus-veg { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: rgba(0,0,0,0.25); }
-.veg-vindu { writing-mode: vertical-rl; font-weight: 900; letter-spacing: 0.18em; font-size: 0.8rem; color: #f2a03d; }
-.veg-dor { width: 34px; height: 52px; background: #0e7c7b; border-radius: 17px 17px 0 0; border: 2px solid rgba(255,255,255,0.25); border-bottom: none; display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.8rem; }
+.hus-rom { position: relative; background: linear-gradient(180deg, rgba(242,160,61,0.16), rgba(224,86,47,0.10)); border-left: 2px solid rgba(242,160,61,0.5); border-right: 2px solid rgba(242,160,61,0.5); display: flex; flex-direction: column; align-items: center; padding-top: 1.2rem; }
+.rom-tittel { font-weight: 900; font-size: 1.05rem; letter-spacing: 0.14em; text-align: center; background: linear-gradient(90deg,#f2a03d,#e0562f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.rom-under { font-size: 0.68rem; color: #9d99b8; font-style: italic; margin-top: 0.2rem; }
+.rom-vindu { width: 56px; height: 56px; border: 3px solid rgba(255,255,255,0.35); border-radius: 6px; margin-top: 1.1rem; background: rgba(255,255,255,0.06); box-shadow: inset 0 0 18px rgba(242,160,61,0.25); }
+.rom-dor { position: absolute; bottom: 0; width: 64px; height: 84px; background: #0e7c7b; border: 3px solid rgba(255,255,255,0.3); border-bottom: none; border-radius: 32px 32px 0 0; box-shadow: 0 0 24px rgba(14,124,123,0.5); }
+.rom-dor::after { content: ""; position: absolute; right: 10px; top: 50%; width: 6px; height: 6px; border-radius: 50%; background: #f2a03d; }
 .hus-fundament { background: linear-gradient(180deg, #3a3355, #2a2440); padding: 1rem 1.2rem; border-radius: 0 0 6px 6px; border-top: 4px solid #e0562f; }
 .hus-fundament .hus-brikke { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); color: #fff; }
 .hus-fundament .hus-brikke:hover { background: #e0562f; }
@@ -259,7 +262,7 @@ footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2r
 .hus-brikke { border-radius: 10px; padding: 0.55rem 0.9rem; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; border: 1px solid rgba(255,255,255,0.16); }
 @media (max-width: 560px) {
   .hus-kropp { grid-template-columns: 1fr; }
-  .hus-veg { display: none; }
+  .hus-rom { border: none; border-top: 2px solid rgba(242,160,61,0.5); padding-bottom: 5.5rem; }
   .hus-soyle:first-child { border-right: none; border-bottom: 1px solid #2c2745; }
   .hus-soyle:last-child { border-left: none; }
 }
