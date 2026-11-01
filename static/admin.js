@@ -58,10 +58,15 @@ async function load(group) {
       datasets: [{
         label: "Alle ansatte",
         data: radarData.map((x) => x.verdi),
-        borderColor: "#0e7c7b", backgroundColor: "rgba(14,124,123,0.25)", pointBackgroundColor: "#0e7c7b",
+        borderColor: "#5fd4c4", backgroundColor: "rgba(95,212,196,0.30)", pointBackgroundColor: "#5fd4c4", borderWidth: 2.5, pointRadius: 4,
       }],
     },
-    options: { scales: { r: { min: 1, max: 5, ticks: { stepSize: 1 } } }, plugins: { legend: { labels: { color: "#5b6b7a" } } } },
+    options: {
+      scales: { r: { min: 1, max: 5, ticks: { stepSize: 1, color: "#a29dc4", backdropColor: "transparent" },
+                    grid: { color: "rgba(255,255,255,0.12)" }, angleLines: { color: "rgba(255,255,255,0.12)" },
+                    pointLabels: { color: "#e8e6f5", font: { size: 12 } } } },
+      plugins: { legend: { labels: { color: "#cfcbe4" } } },
+    },
   });
 
   // Gap ledere vs medarbeidere
