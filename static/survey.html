@@ -3,56 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kulturportalen – Mål og utvikle kulturen i din organisasjon</title>
+<title>Kulturportalen – Kartlegg kulturen. Bygg broen til forbedring.</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
-<header class="topbar">
+<body class="landing-body">
+
+<!-- Animerte bakgrunns-blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+<div class="grid-overlay"></div>
+
+<header class="topbar topbar-dark">
   <h1>Kulturportalen</h1>
   <nav><a href="/">Hjem</a> &middot; <a href="/om">Om tjenesten</a> &middot; <a href="/admin">Resultater</a></nav>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Anonym kulturkartlegging</p>
-    <h1>Kartlegg kulturen.<br>Bygg broen til forbedring.</h1>
-    <p class="hero-lead">Vi måler både ledelse (TL) og forbedringskultur (FK) – og viser hvordan de henger sammen.
-    Deretter følger vi opp med lederstøtte og tiltak, og måler effekten ved neste runde.</p>
+<section class="hero-landing">
+  <div class="hero-landing-inner">
+    <p class="hero-eyebrow-dark">Forskningsbasert · Anonym · 3–5 min</p>
+    <h1 class="mega">
+      KULTUREN ER<br>
+      <span class="grad-text">LEDELSENS</span><br>
+      SPEIL.
+    </h1>
+    <p class="hero-lead-dark">
+      Vi måler <strong>transformasjonsledelse</strong> og <strong>forbedringskultur</strong> i samme måling –
+      og viser broen mellom dem. Deretter følger vi opp med lederstøtte og måler effekten.
+    </p>
     <div class="hero-cta">
-      <button class="btn btn-light btn-lg" id="startBtn">Ta undersøkelsen</button>
-      <a class="btn btn-ghost btn-lg" href="/admin">Se kulturrapporten</a>
+      <button class="btn btn-glow btn-lg" id="startBtn">Ta undersøkelsen →</button>
+      <a class="btn btn-ghost-dark btn-lg" href="/admin">Se rapporten</a>
     </div>
-    <p class="hero-note">Tar ca. 3–5 minutter &middot; Helt anonym</p>
+    <p class="hero-note-dark">20 påstander · helt anonym · resultat med én gang</p>
+  </div>
+
+  <!-- statistikk-badges fra studien -->
+  <div class="stat-strip">
+    <div class="stat-badge"><div class="stat-num grad-text">0,851</div><div class="stat-lbl">korrelasjon TL ↔ FK (r)</div></div>
+    <div class="stat-badge"><div class="stat-num">198</div><div class="stat-lbl">respondenter i studien</div></div>
+    <div class="stat-badge"><div class="stat-num">20</div><div class="stat-lbl">påstander, 10 dimensjoner</div></div>
+    <div class="stat-badge"><div class="stat-num">4+6</div><div class="stat-lbl">TL- og FK-dimensjoner</div></div>
   </div>
 </section>
 
-<main id="landing">
+<main id="landing" class="landing-main">
   <div class="feature-row">
-    <div class="feature-card">
-      <div class="feature-icon" style="background:var(--accent-soft)">🛡️</div>
-      <h3>Helt anonymt</h3>
-      <p>Ingen navn, e-post eller sporbare svar. Resultatene vises kun samlet, aldri per person.</p>
+    <div class="feature-card feature-card-dark">
+      <div class="feature-icon" style="background:rgba(224,86,47,0.18)">🔗</div>
+      <h3>Broen TL → FK</h3>
+      <p>Rapporten kobler hver lederdimensjon til kulturdimensjonene den bygger – med dine egne tall.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:var(--teal-soft)">🔗</div>
-      <h3>TL + FK henger sammen</h3>
-      <p>Rapporten viser broen fra ledelse til kultur – hvilke ledergrep som bygger hvilke kulturdimensjoner.</p>
+    <div class="feature-card feature-card-dark">
+      <div class="feature-icon" style="background:rgba(14,124,123,0.25)">🛡️</div>
+      <h3>Anonymitet først</h3>
+      <p>Ingen innlogging, ingen sporbare svar. Grupper under 5 slås sammen i rapporten.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:#efe9fb">🤝</div>
+    <div class="feature-card feature-card-dark">
+      <div class="feature-icon" style="background:rgba(109,79,194,0.22)">🤝</div>
       <h3>Kartlegging + lederstøtte</h3>
-      <p>Vi følger opp med tiltaksplan (PDCA) og gjenmåling – slik at målingen blir til faktisk forbedring.</p>
+      <p>Tolkningsmøte, PDCA-tiltaksplan og gjenmåling – måling blir til faktisk forbedring.</p>
     </div>
   </div>
 
-  <div class="card landing-about">
+  <div class="card about-dark">
     <h2>Slik følger vi opp</h2>
-    <p>Undersøkelsen måler <strong>transformasjonsledelse (TL)</strong> og <strong>forbedringskultur (FK)</strong> –
-    20 påstander, forskningsbasert. Rapporten viser indekser, gap mellom ledere og medarbeidere,
-    avdelinger og broen mellom TL og FK.</p>
-    <p>Deretter følger <strong>lederstøtte</strong>: tolkningsmøte, tiltaksplan og gjenmåling som viser effekt over tid.</p>
-    <p class="muted">Forskningsgrunnlag: sammenhengen mellom TL og FK (r = 0,851) er funnet i en masteroppgave ved UiT –
-    les mer på <a href="/om">Om tjenesten</a>. Etter innsending får du din egen tilbakemelding med det samme.</p>
+    <p>Målingen dekker <strong>transformasjonsledelse (TL)</strong> og <strong>forbedringskultur (FK)</strong>.
+    Rapporten viser indekser, leder–medarbeider-gap, avdelinger og broen mellom TL og FK.
+    Deretter følger <strong>lederstøtte</strong>: tiltaksplan og gjenmåling som viser effekt over tid.</p>
+    <p class="muted-dark">Forskningsgrunnlag: sammenhengen TL–FK (r = 0,851) fra masteroppgave ved UiT –
+    les mer på <a href="/om" class="link-light">Om tjenesten</a>.</p>
   </div>
 </main>
 
@@ -105,7 +125,7 @@
     </div>
   </form>
 </main>
-<footer>Anonym kulturkartlegging &middot; Basert på forskning om transformasjonsledelse og forbedringskultur</footer>
+<footer class="footer-dark">Anonym kulturkartlegging &middot; Basert på forskning om transformasjonsledelse og forbedringskultur</footer>
 <script src="/static/survey.js"></script>
 <script src="/static/livereload.js"></script>
 </body>
