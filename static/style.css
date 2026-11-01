@@ -320,3 +320,18 @@ td { border-bottom: 1px solid rgba(255,255,255,0.08); color: #d6d3e8; }
 .bar-track { background: rgba(255,255,255,0.08); }
 .bar-val { color: #a29dc4; }
 select { background: #1e1842; color: #f2f0fa; border-color: rgba(255,255,255,0.15); }
+
+/* 4-stegs rekke */
+.steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-top: 1.6rem; }
+.step-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1.2rem 1.1rem; color: #cfcbe4; font-size: 0.88rem; }
+.step-card strong { color: #fff; display: block; margin: 0.5rem 0 0.35rem; font-size: 1rem; }
+.step-card p { margin: 0; line-height: 1.5; }
+.step-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.05rem; color: #0d0a24; background: linear-gradient(135deg, #5fd4c4, #7b6fd0); }
+/* kontaktkort */
+.contact-card { display: flex; gap: 1.2rem; align-items: center; }
+.contact-avatar { width: 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg, #5fd4c4, #7b6fd0); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: #0d0a24; flex-shrink: 0; }
+.contact-info strong { color: #fff; font-size: 1.05rem; }
+.contact-info .role { color: #5fd4c4; font-size: 0.85rem; font-weight: 600; }
+.contact-info p { margin: 0.4rem 0 0; color: #a29dc4; font-size: 0.9rem; }
+@media (max-width: 860px) { .steps-row { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .steps-row { grid-template-columns: 1fr; } .contact-card { flex-direction: column; text-align: center; } }
