@@ -38,7 +38,9 @@ function buildQuestions() {
 
 document.getElementById("startBtn").addEventListener("click", () => {
   document.getElementById("landing").hidden = true;
-  document.querySelector(".hero").hidden = true;
+  const hero = document.querySelector(".hero, .hero-landing");
+  if (hero) hero.hidden = true;
+  document.body.classList.remove("landing-body");
   document.getElementById("surveyWrap").hidden = false;
   window.scrollTo(0, 0);
 });
