@@ -8,7 +8,6 @@
 </head>
 <body class="landing-body">
 
-<!-- Animerte bakgrunns-blobs -->
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
@@ -16,69 +15,150 @@
 
 <header class="topbar topbar-dark">
   <h1>Kulturportalen</h1>
-  <nav><a href="/">Hjem</a> &middot; <a href="/om">Om tjenesten</a> &middot; <a href="/modell">Modellen</a> &middot; <a href="/admin">Resultater</a></nav>
+  <nav>
+    <a href="#hvorfor">Hvorfor</a> &middot;
+    <a href="#modell">Modellen</a> &middot;
+    <a href="#tjeneste">Tjenesten</a> &middot;
+    <a href="#rapport">Rapport</a> &middot;
+    <a href="#handlingsplan">Handlingsplan</a> &middot;
+    <a href="/admin">Resultater</a>
+  </nav>
 </header>
 
-<section class="hero-landing">
+<!-- 1. HERO -->
+<section class="hero-landing" id="top">
   <div class="hero-landing-inner">
     <p class="hero-eyebrow-dark">Forskningsbasert · Anonym · 3–5 min</p>
-    <h1 class="mega">
-      KULTUREN ER<br>
-      <span class="grad-text">LEDELSENS</span><br>
-      SPEIL.
-    </h1>
-    <p class="hero-lead-dark">
-      Vi måler <strong>transformasjonsledelse</strong> og <strong>forbedringskultur</strong> i samme måling –
-      og viser broen mellom dem. Deretter følger vi opp med lederstøtte og måler effekten.
-    </p>
+    <h1 class="mega">KULTUREN ER<br><span class="grad-text">LEDELSENS</span><br>SPEIL.</h1>
+    <p class="hero-lead-dark">Vi måler <strong>transformasjonsledelse</strong> og <strong>forbedringskultur</strong> i samme måling –
+    og viser broen mellom dem. Deretter følger vi opp med lederstøtte og måler effekten.</p>
     <div class="hero-cta">
       <button class="btn btn-glow btn-lg" id="startBtn">Ta undersøkelsen →</button>
-      <a class="btn btn-ghost-dark btn-lg" href="/admin">Se rapporten</a>
+      <a class="btn btn-ghost-dark btn-lg" href="#hvorfor">Les hvorfor ↓</a>
     </div>
-    <p class="hero-note-dark">20 påstander · helt anonym · resultat med én gang</p>
-  </div>
-
-  <!-- statistikk-badges fra studien -->
-  <div class="stat-strip">
-    <div class="stat-badge"><div class="stat-num grad-text">0,851</div><div class="stat-lbl">korrelasjon TL ↔ FK (r)</div></div>
-    <div class="stat-badge"><div class="stat-num">198</div><div class="stat-lbl">respondenter i studien</div></div>
-    <div class="stat-badge"><div class="stat-num">20</div><div class="stat-lbl">påstander, 10 dimensjoner</div></div>
-    <div class="stat-badge"><div class="stat-num">4+6</div><div class="stat-lbl">TL- og FK-dimensjoner</div></div>
+    <div class="stat-strip">
+      <div class="stat-badge"><div class="stat-num grad-text">0,851</div><div class="stat-lbl">korrelasjon TL ↔ FK (r)</div></div>
+      <div class="stat-badge"><div class="stat-num">198</div><div class="stat-lbl">respondenter i studien</div></div>
+      <div class="stat-badge"><div class="stat-num">20</div><div class="stat-lbl">påstander, 10 dimensjoner</div></div>
+    </div>
   </div>
 </section>
 
-<main id="landing" class="landing-main">
-  <div class="feature-row">
-    <div class="feature-card feature-card-dark">
-      <div class="feature-icon" style="background:rgba(224,86,47,0.18)">🔗</div>
-      <h3>Broen TL → FK</h3>
-      <p>Rapporten kobler hver lederdimensjon til kulturdimensjonene den bygger – med dine egne tall.</p>
+<!-- 2. HVORFOR (fra oppgaven) -->
+<section class="scroll-sec" id="hvorfor">
+  <div class="sec-inner">
+    <p class="sec-eyebrow">Hvorfor fokusere på dette?</p>
+    <h2 class="sec-title">Systemer er ikke nok –<br><span class="grad-text">kulturen må bære dem</span></h2>
+    <div class="sec-cols">
+      <p>Mange virksomheter investerer i kvalitetssystemer, prosedyrer og Lean-verktøy – uten at
+      forbedringsarbeidet nødvendigvis blir en naturlig del av arbeidshverdagen. Forskningen viser at
+      <strong>systemer og styring ikke alene er tilstrekkelig</strong>: forbedring må også forankres i
+      ledelse, kultur, læring og medarbeiderinvolvering.</p>
+      <p>Masteroppgaven bak portalen fant en <strong>sterk positiv sammenheng mellom transformasjonsledelse
+      og forbedringskultur</strong> (Pearsons r = 0,851, p &lt; 0,001). Ledelse og kultur henger tett sammen
+      i medarbeidernes opplevelse av arbeidshverdagen – derfor måler vi begge deler samtidig.</p>
     </div>
-    <div class="feature-card feature-card-dark">
-      <div class="feature-icon" style="background:rgba(14,124,123,0.25)">🛡️</div>
-      <h3>Anonymitet først</h3>
-      <p>Ingen innlogging, ingen sporbare svar. Grupper under 5 slås sammen i rapporten.</p>
-    </div>
-    <div class="feature-card feature-card-dark">
-      <div class="feature-icon" style="background:rgba(109,79,194,0.22)">🤝</div>
-      <h3>Kartlegging + lederstøtte</h3>
-      <p>Tolkningsmøte, PDCA-tiltaksplan og gjenmåling – måling blir til faktisk forbedring.</p>
+    <div class="sec-points">
+      <div class="point"><span>🎯</span><div><strong>Retning</strong><br>Verdier og strategi må etterleves i praksis, ikke bare i dokumenter.</div></div>
+      <div class="point"><span>🛡️</span><div><strong>Trygghet</strong><br>Det må være trygt å si fra om feil – ellers lærer organisasjonen ingenting.</div></div>
+      <div class="point"><span>⚙️</span><div><strong>System</strong><br>Prosesser, avvik og erfaringer må følges opp strukturert.</div></div>
     </div>
   </div>
+</section>
 
-  <div class="card about-dark">
-    <h2>Slik følger vi opp</h2>
-    <p>Målingen dekker <strong>transformasjonsledelse (TL)</strong> og <strong>forbedringskultur (FK)</strong>.
-    Rapporten viser indekser, leder–medarbeider-gap, avdelinger og broen mellom TL og FK.
-    Deretter følger <strong>lederstøtte</strong>: tiltaksplan og gjenmåling som viser effekt over tid.</p>
-    <p class="muted-dark">Forskningsgrunnlag: sammenhengen TL–FK (r = 0,851) fra masteroppgave ved UiT –
-    les mer på <a href="/om" class="link-light">Om tjenesten</a>.</p>
+<!-- 3. MODELLEN (huset bygges inn) -->
+<section class="scroll-sec" id="modell">
+  <div class="sec-inner">
+    <p class="sec-eyebrow">Modellen</p>
+    <h2 class="sec-title">Forbedringskultur er <span class="grad-text">huset</span> vi jobber i</h2>
+    <p class="sec-lead">Fundamentet gir retning, søylene bærer kulturen, taket viser resultatet.
+    Klikk på hver del for å lese hvordan elementene henger sammen.</p>
+    <div id="hus" class="hus"></div>
+    <div id="dimPanel" class="card about-dark" style="display:none;max-width:640px;margin:1.2rem auto 0">
+      <h2 id="dimTittel"></h2>
+      <p id="dimTekst"></p>
+      <p><strong>Henger sammen med:</strong> <span id="dimKoblinger"></span></p>
+    </div>
   </div>
-</main>
+</section>
 
+<!-- 4. TJENESTEN -->
+<section class="scroll-sec" id="tjeneste">
+  <div class="sec-inner">
+    <p class="sec-eyebrow">Tjenesten</p>
+    <h2 class="sec-title">Kartlegging → lederstøtte → <span class="grad-text">målt effekt</span></h2>
+    <div class="feature-row">
+      <div class="feature-card feature-card-dark">
+        <div class="feature-icon" style="background:rgba(224,86,47,0.18)">📋</div>
+        <h3>1. Kartlegging</h3>
+        <p>Anonym undersøkelse (20 påstander, 3–5 min) + automatisk rapport med TL/FK-indekser, dimensjoner, gap og avdelinger.</p>
+      </div>
+      <div class="feature-card feature-card-dark">
+        <div class="feature-icon" style="background:rgba(14,124,123,0.25)">🤝</div>
+        <h3>2. Lederstøtte</h3>
+        <p>Tolkningsmøte med ledelsen, tiltaksplan rettet mot de svakeste dimensjonene, og støtte i gjennomføring.</p>
+      </div>
+      <div class="feature-card feature-card-dark">
+        <div class="feature-icon" style="background:rgba(109,79,194,0.22)">📈</div>
+        <h3>3. Gjenmåling</h3>
+        <p>Ny måling etter 6–12 måneder med trendvisning – effekten av tiltakene blir synlig.</p>
+      </div>
+    </div>
+    <p class="sec-lead">Forskningsgrunnlag: Løvslett &amp; Militei (2026), «Lederens rolle som kulturarkitekt», UiT.
+    Målingen er et utviklingsverktøy – tverrsnittsdata viser samvariasjon, ikke påvist årsak.</p>
+  </div>
+</section>
+
+<!-- 5. RAPPORT -->
+<section class="scroll-sec" id="rapport">
+  <div class="sec-inner">
+    <p class="sec-eyebrow">Rapporten</p>
+    <h2 class="sec-title">Dette får ledelsen – <span class="grad-text">ferdig inngangsmateriell</span></h2>
+    <div class="sec-cols">
+      <div>
+        <ul class="check-list">
+          <li><strong>TL- og FK-indekser</strong> med Pearsons korrelasjon mellom dem</li>
+          <li><strong>Radar over FK-dimensjonene</strong> – alle ansatte vs. ledere</li>
+          <li><strong>Gap-analyse</strong>: der lederbildet og medarbeideropplevelsen skiller lag</li>
+          <li><strong>Avdelingstabell</strong> med «mistenkelig stille»-flagg (lav trygghet + lav FK)</li>
+          <li><strong>Broen TL → FK</strong>: hvilke ledergrep som bygger hvilke kulturdimensjoner</li>
+          <li><strong>Anonymiserte kommentarer</strong> + trend over tid ved gjenmåling</li>
+        </ul>
+      </div>
+      <div class="card about-dark">
+        <p class="muted-dark" style="margin:0"><strong>Demo:</strong> gå til <a class="link-light" href="/admin">resultatsiden</a> og klikk
+        «Fyll med demodata» for å se en full rapport med 118 simulerte svar – inkludert gap og avdelingssignal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. HANDLINGSPLAN -->
+<section class="scroll-sec" id="handlingsplan">
+  <div class="sec-inner">
+    <p class="sec-eyebrow">Handlingsplan</p>
+    <h2 class="sec-title">Fra måling til <span class="grad-text">faktisk forbedring</span></h2>
+    <p class="sec-lead">Rapporten foreslår fokusområde automatisk (laveste FK-dimensjon). Lederstøtten følger PDCA:</p>
+    <div class="pdca-row">
+      <div class="pdca-card"><div class="pdca-letter">P</div><strong>Plan</strong><p>Kartlegging + tolkningsmøte med ledelsen.</p></div>
+      <div class="pdca-card"><div class="pdca-letter">D</div><strong>Do</strong><p>2–3 konkrete tiltak mot fokusområdet.</p></div>
+      <div class="pdca-card"><div class="pdca-letter">C</div><strong>Check</strong><p>Gjenmåling etter 6–12 måneder.</p></div>
+      <div class="pdca-card"><div class="pdca-letter">A</div><strong>Act</strong><p>Juster tiltak ut fra hva som fungerte.</p></div>
+    </div>
+    <p class="muted-dark" style="margin-top:1rem">Fremover: per-avdeling handlingsplaner og en FK-assistent (LLM) som tolker kommentarer og
+    foreslår tiltak ut fra kundens egne tall – bygges på toppen av denne portalen når datagrunnlaget er på plass.</p>
+    <div class="hero-cta" style="margin-top:1.6rem">
+      <button class="btn btn-glow btn-lg" id="startBtn2">Ta undersøkelsen →</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-dark">Anonym kulturkartlegging &middot; Basert på forskning om transformasjonsledelse og forbedringskultur</footer>
+
+<!-- skjema (skjult til man klikker) -->
 <main id="surveyWrap" hidden>
   <form id="surveyForm">
-    <div class="card">
+    <div class="card about-dark">
       <h2>Bakgrunnsinformasjon</h2>
       <div class="field">
         <label for="gender">Kjønn</label>
@@ -115,7 +195,7 @@
       </div>
     </div>
     <div id="questions"></div>
-    <div class="card">
+    <div class="card about-dark">
       <h2>Kommentar (valgfritt)</h2>
       <div class="field">
         <textarea id="comment" placeholder="Er det noe du vil utdype om ledelse, kultur eller forbedringsarbeid?"></textarea>
@@ -125,8 +205,66 @@
     </div>
   </form>
 </main>
-<footer class="footer-dark">Anonym kulturkartlegging &middot; Basert på forskning om transformasjonsledelse og forbedringskultur</footer>
+
 <script src="/static/survey.js"></script>
+<script>
+// Bygg huset inn på forsiden
+fetch("/modell.json").then(r => r.json()).then(m => {
+  const hus = document.getElementById("hus");
+  const alle = {};
+  for (const del of Object.values(m.deler)) for (const [k, d] of Object.entries(del.dims)) alle[k] = d;
+  function brikke(dimKey, dim) {
+    const b = document.createElement("button");
+    b.className = "hus-brikke"; b.textContent = dim.tittel;
+    b.onclick = () => {
+      const p = document.getElementById("dimPanel");
+      p.style.display = "block";
+      document.getElementById("dimTittel").textContent = dim.tittel;
+      document.getElementById("dimTekst").textContent = dim.tekst;
+      document.getElementById("dimKoblinger").textContent =
+        (m.koblinger[dimKey] || []).map(k => alle[k] ? alle[k].tittel : k).join(", ");
+      p.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+    return b;
+  }
+  const tak = document.createElement("div");
+  tak.className = "hus-tak";
+  tak.innerHTML = '<div class="hus-label">Taket: resultat og dynamikk</div>';
+  const tg = document.createElement("div"); tg.className = "hus-grid";
+  for (const [k, d] of Object.entries(m.deler.tak.dims)) tg.appendChild(brikke(k, d));
+  tak.appendChild(tg); hus.appendChild(tak);
+  const kropp = document.createElement("div"); kropp.className = "hus-kropp";
+  for (const [id, key] of [["soyle1Brikker","soyle_mennesker"],["soyle2Brikker","soyle_struktur"]]) {
+    const col = document.createElement("div"); col.className = "hus-soyle";
+    col.innerHTML = `<div class="hus-label">${m.deler[key].tittel}</div>`;
+    const g = document.createElement("div"); g.className = "hus-grid vert"; g.id = id;
+    for (const [k, d] of Object.entries(m.deler[key].dims)) g.appendChild(brikke(k, d));
+    col.appendChild(g); kropp.appendChild(col);
+    if (id === "soyle1Brikker") {
+      const rom = document.createElement("div"); rom.className = "hus-rom";
+      rom.innerHTML = '<div class="rom-tittel">FORBEDRINGS&shy;KULTUR</div><div class="rom-under">rommet vi jobber i</div><div class="rom-vindu"></div><div class="rom-vindu"></div><div class="rom-dor"></div>';
+      kropp.insertBefore(rom, kropp.children[1]);
+    }
+  }
+  hus.appendChild(kropp);
+  const fund = document.createElement("div"); fund.className = "hus-fundament";
+  fund.innerHTML = '<div class="hus-label">Fundamentet: retning og forankring</div>';
+  const fg = document.createElement("div"); fg.className = "hus-grid";
+  for (const [k, d] of Object.entries(m.deler.fundament.dims)) fg.appendChild(brikke(k, d));
+  fund.appendChild(fg); hus.appendChild(fund);
+  const bakke = document.createElement("div"); bakke.className = "hus-bakke"; hus.appendChild(bakke);
+});
+
+// begge CTA-knapper starter skjemaet
+for (const id of ["startBtn", "startBtn2"]) {
+  document.getElementById(id).addEventListener("click", () => {
+    document.querySelectorAll(".scroll-sec, .hero-landing, footer").forEach(e => e.style.display = "none");
+    document.body.classList.remove("landing-body");
+    document.getElementById("surveyWrap").hidden = false;
+    window.scrollTo(0, 0);
+  });
+}
+</script>
 <script src="/static/livereload.js"></script>
 </body>
 </html>
