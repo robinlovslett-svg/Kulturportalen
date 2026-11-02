@@ -335,3 +335,24 @@ select { background: #1e1842; color: #f2f0fa; border-color: rgba(255,255,255,0.1
 .contact-info p { margin: 0.4rem 0 0; color: #a29dc4; font-size: 0.9rem; }
 @media (max-width: 860px) { .steps-row { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .steps-row { grid-template-columns: 1fr; } .contact-card { flex-direction: column; text-align: center; } }
+
+/* ---------- NY LANDING v2 (aider/ncocean-inspirert) ---------- */
+#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.scroll-sec { min-height: 90vh; display: flex; align-items: center; }
+.scroll-sec.alt { background: rgba(255,255,255,0.025); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; max-width: 1100px; margin: 0 auto; width: 100%; }
+.split-text p { color: #cfcbe4; font-size: 1.02rem; line-height: 1.7; }
+.split-text p strong { color: #fff; }
+.split-text .btn { margin-top: 1.2rem; }
+.visual-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2.2rem; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+.visual-big { font-size: 3.4rem; font-weight: 900; letter-spacing: -0.02em; }
+.visual-lbl { color: #e8e6f5; font-size: 0.98rem; margin-top: 0.5rem; line-height: 1.5; }
+.visual-note { color: #7d799a; font-size: 0.78rem; margin-top: 1rem; }
+.visual-title { color: #fff; font-weight: 800; font-size: 1.2rem; margin-bottom: 1rem; }
+.visual-list { list-style: none; padding: 0; margin: 0 0 1.4rem; text-align: left; color: #cfcbe4; font-size: 0.95rem; }
+.visual-list li { padding: 0.45rem 0 0.45rem 1.6rem; position: relative; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.visual-list li::before { content: "✓"; position: absolute; left: 0; color: #5fd4c4; font-weight: 700; }
+@media (max-width: 860px) {
+  .split { grid-template-columns: 1fr; gap: 1.6rem; }
+  .scroll-sec { min-height: auto; padding: 4rem 1.2rem; }
+}
