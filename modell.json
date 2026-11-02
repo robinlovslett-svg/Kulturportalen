@@ -1,0 +1,118 @@
+{
+ "title": "Forbedringskultur – huset",
+ "intro": "Forbedringskultur er rommet vi jobber i. Fundamentet gir retning og forankring, søylene bærer kulturen, og taket viser resultatet. Klikk på hver del for å lese hvordan elementene henger sammen.",
+ "deler": {
+  "fundament": {
+   "tittel": "Fundamentet: Retning og forankring",
+   "dims": {
+    "strategisk_forankring": {
+     "tittel": "Strategisk forankring",
+     "tekst": "Forbedringsarbeid må henge sammen med organisasjonens strategi og mål. Uten tydelig retning blir forbedring enkeltstående tiltak uten varig effekt."
+    },
+    "verdier": {
+     "tittel": "Organisasjonens verdier",
+     "tekst": "Verdiene må etterleves i daglig praksis – ikke bare stå i dokumenter. Når verdiene viser seg i handling, gir de forbedringsarbeidet retning og legitimitet."
+    }
+   }
+  },
+  "soyle_mennesker": {
+   "tittel": "Søyle 1: Mennesker og miljø",
+   "dims": {
+    "stottende_ledelse": {
+     "tittel": "Støttende ledelse",
+     "tekst": "Ledelsen må legge praktisk til rette for forbedring: tid, ressurser, handlingsrom og arenaer for erfaringsdeling."
+    },
+    "psykologisk_trygghet": {
+     "tittel": "Psykologisk trygghet",
+     "tekst": "Det må være trygt å si fra om feil og problemer – også til ledelsen. Uten trygghet tier medarbeiderne, og da lærer organisasjonen ingenting."
+    },
+    "engasjement": {
+     "tittel": "Engasjement & eierskap",
+     "tekst": "Medarbeiderne må ha frihet og vilje til å engasjere seg aktivt i hvordan arbeidet utføres og forbedres."
+    }
+   }
+  },
+  "soyle_struktur": {
+   "tittel": "Søyle 2: Struktur og prosess",
+   "dims": {
+    "prosessetenkning": {
+     "tittel": "Prosessetenkning",
+     "tekst": "Arbeidet må være systematisk og faktabasert – vi forstår og forbedrer arbeidsprosessene, ikke bare symptomene."
+    },
+    "systematisk_oppfolging": {
+     "tittel": "Systematisk oppfølging",
+     "tekst": "Avvik og erfaringer må følges opp strukturert, slik at læring blir omgjort til varige forbedringer."
+    },
+    "maal_tilbakemelding": {
+     "tittel": "Mål og tilbakemelding",
+     "tekst": "Tydelige mål og jevnlig tilbakemelding gjør at både ledere og medarbeidere vet hva som forventes – og hva som fungerer."
+    }
+   }
+  },
+  "tak": {
+   "tittel": "Taket: Resultat og dynamikk",
+   "dims": {
+    "kundefokus": {
+     "tittel": "Kundefokus",
+     "tekst": "Resultatet av kulturen skal merkes ute hos kunden – kvalitet og verdi skapes gjennom alle søylene."
+    },
+    "laerende_organisasjon": {
+     "tittel": "Lærende organisasjon",
+     "tekst": "Organisasjonen analyserer erfaringer, deler kunnskap og stiller spørsmål ved etablerte måter å jobbe på. Dette er taket som gjør kulturen dynamisk."
+    }
+   }
+  }
+ },
+ "koblinger": {
+  "verdier": [
+   "strategisk_forankring",
+   "stottende_ledelse",
+   "prosessetenkning"
+  ],
+  "strategisk_forankring": [
+   "verdier",
+   "maal_tilbakemelding",
+   "kundefokus"
+  ],
+  "stottende_ledelse": [
+   "psykologisk_trygghet",
+   "engasjement",
+   "verdier"
+  ],
+  "psykologisk_trygghet": [
+   "stottende_ledelse",
+   "engasjement",
+   "laerende_organisasjon",
+   "systematisk_oppfolging"
+  ],
+  "engasjement": [
+   "psykologisk_trygghet",
+   "stottende_ledelse",
+   "maal_tilbakemelding"
+  ],
+  "prosessetenkning": [
+   "systematisk_oppfolging",
+   "maal_tilbakemelding",
+   "verdier"
+  ],
+  "systematisk_oppfolging": [
+   "prosessetenkning",
+   "psykologisk_trygghet",
+   "laerende_organisasjon"
+  ],
+  "maal_tilbakemelding": [
+   "engasjement",
+   "prosessetenkning",
+   "strategisk_forankring"
+  ],
+  "kundefokus": [
+   "strategisk_forankring",
+   "laerende_organisasjon"
+  ],
+  "laerende_organisasjon": [
+   "psykologisk_trygghet",
+   "systematisk_oppfolging",
+   "kundefokus"
+  ]
+ }
+}
