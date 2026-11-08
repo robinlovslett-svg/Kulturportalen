@@ -7,6 +7,11 @@ Webapp bygget på masteroppgaven "Lederens rolle som kulturarkitekt"
 import json
 import sqlite3
 import statistics
+
+try:
+    import kulturarkitekt
+except ImportError:
+    kulturarkitekt = None
 import uuid
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -189,6 +194,17 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(self._result(rid))
         elif path == "/api/demo":
             self._send_json(self._seed_demo())
+        elif path == "/api/ai-analyse":
+            if kulturarkitekt is None:
+                self._send_json({"ok": False, "error": "kulturarkitekt.py ikke funnet"}, 500)
+            else:
+                stats = self._stats({})
+                if stats.get("count", 0) == 0:
+                    self._send_json({"ok": False, "error": "Ingen data – fyll med demodata først"}, 400)
+                elif "mock" in parse_qs(url.query):
+                    self._send_json(kulturarkitekt.mock_analyse(stats))
+                else:
+                    self._send_json(kulturarkitekt.analyser(stats))
         elif path == "/api/export.csv":
             self._export_csv()
         else:

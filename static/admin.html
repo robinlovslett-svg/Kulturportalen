@@ -13,6 +13,14 @@
 </header>
 <main style="margin-top:1.5rem;max-width:1200px">
   <div class="card">
+    <h2>🧠 AI-analyse (Kulturarkitekten)</h2>
+    <p class="muted">Analyse av måledata generert med Mistral Large. Krever MISTRAL_API_KEY på serveren.</p>
+    <button id="aiBtn">Kjør AI-analyse</button>
+    <button id="aiMockBtn" class="btn-ghost">Test lokalt (mock)</button>
+    <div id="aiOut" style="margin-top:1rem;white-space:pre-wrap"></div>
+  </div>
+
+  <div class="card">
     <h2>Kulturrapport</h2>
     <div class="kpi-row" id="kpis"></div>
     <p id="corr" class="muted"></p>

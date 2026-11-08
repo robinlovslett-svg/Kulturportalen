@@ -151,3 +151,17 @@ document.getElementById("demoBtn").addEventListener("click", async () => {
   const r = await fetch("/api/demo"); await r.json(); load("");
 });
 load("");
+
+// AI-analyse (Kulturarkitekten)
+const aiBtn = document.getElementById("aiBtn");
+const aiMockBtn = document.getElementById("aiMockBtn");
+const aiOut = document.getElementById("aiOut");
+async function kjorAi(mock) {
+  aiOut.textContent = "Analyserer…";
+  const url = mock ? "/api/ai-analyse?mock=1" : "/api/ai-analyse";
+  const r = await fetch(url);
+  const d = await r.json();
+  aiOut.textContent = d.ok ? d.tekst : "Feil: " + d.error;
+}
+if (aiBtn) aiBtn.onclick = () => kjorAi(false);
+if (aiMockBtn) aiMockBtn.onclick = () => kjorAi(true);
